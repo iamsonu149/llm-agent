@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LLM Agent POC</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    /* small responsive tweaks */
+    @media (max-width: 640px) {
+      #conversation { height: 50vh !important; }
+    }
+  </style>
+  <!-- Model picker UI from bootstrap-llm-provider -->
+  <script type="module" src="bootstrap-llm-provider.js"></script>
+  <!-- Alert UI from bootstrap-alert -->
+  <script type="module" src="bootstrap-alert.js"></script>
+</head>
+<body class="bg-light">
+
+  <div class="container py-4">
+    <h2>LLM Agent Proof-of-Concept</h2>
+    <div id="model-picker"></div>
+    <div class="card mb-3">
+      <div class="card-body">
+        <form id="settings-form" class="row g-2 align-items-end">
+          <div class="col-md-4">
+            <label for="api-key" class="form-label">API Key</label>
+            <input type="text" id="api-key" class="form-control" placeholder="" autocomplete="off" />
+          </div>
+          <div class="col-md-4">
+            <label for="base-url" class="form-label">Base URL</label>
+            <input type="text" id="base-url" class="form-control" value="" disabled />
+          </div>
+          <div class="col-md-4">
+            <label for="model" class="form-label">Model</label>
+            <select id="model" class="form-select">
+              <option value="" selected disabled>Choose a model</option>
+              <option value="openai/gpt-4.1-nano" data-url="https://aipipe.org/openrouter/v1">openai/gpt-4.1-nano</option>
+              <option value="openai/gpt-3.5-turbo" data-url="https://aipipe.org/openrouter/v1">openai/gpt-3.5-turbo</option>
+              <option value="google/gemini-pro" data-url="https://aipipe.org/geminiv1beta/models/gemini-1.5-flash:generateContent">google/gemini-1.5-flash</option>
+              <option value="google/gemini-2.5-flash" data-url="https://aipipe.org/geminiv1beta/models/gemini-2.5-flash:generateContent">google/gemini-2.5-flash</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="conversation" class="border rounded p-3 mb-3 bg-white" style="height:300px;overflow-y:auto;"></div>
+    <form id="user-form" class="d-flex gap-2">
+      <input id="user-input" class="form-control" placeholder="Type your message..." autocomplete="off" />
+      <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+    <div id="alert-area"></div>
+  </div>
+
+  <script src="agent.js"></script>
+</body>
+</html>

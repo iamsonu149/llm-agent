@@ -63,11 +63,4 @@ Deployment suggestions
 - Static hosting (GitHub Pages, Netlify, Vercel): push the `llm_agent` folder and configure static hosting.
 - Railway/Heroku: use `app.py` as a tiny Flask app that serves the static folder; ensure you set environment variables or provide a safe way for users to supply API keys/tokens.
 
-Contribution and license
-- This repo is a small demo. Feel free to open issues or PRs for improvements. Include tests or a quick demo page when adding features.
 
-Contact / Next steps
-- If you want, I can:
-  - Add a `requirements.txt` and a one-command dev task
-  - Add example environment variables and a safe server-side proxy for keys
-  - Improve payload handling for Gemini variants (temperature, system prompts)
